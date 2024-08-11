@@ -4,7 +4,16 @@
 #include<iostream>
 #include <windows.h>
 using namespace std;
-
+void swap01(int a,int b);
+void swap02(int *p,int *p2);
+void bubbleSort(int * arr,int len);
+void printArray(int * arr,int len);
+/**
+ *  **指针的作用：** 可以通过指针间接访问内存
+* 内存编号是从0开始记录的，一般用十六进制数字表示
+* 可以利用指针变量保存地址
+ * @return
+ */
 int main(){
     SetConsoleOutputCP(CP_UTF8);
 //    cout<<"开始冒泡排序:"<<endl;
@@ -102,5 +111,65 @@ int main(){
 //        p2++;
 //    }
 
+    /*⭐ 7.指针和函数*/
+//
+//    int a = 10;
+//    int b = 20;
+//    /*1.值传递*/
+//    swap01(a,b);
+//
+//    cout<<"a = "<< a <<endl;
+//    cout<<"b = "<< b <<endl;
+//
+//    /*2.地址传递*/
+//    swap02(&a,&b);
+//    cout<<"a = "<< a <<endl;
+//    cout<<"b = "<< b <<endl;
 
+    /*⭐ 8.指针配合数组、函数*/
+    /*1.创建数组*/
+    int arr[10] = {4,3,6,9,1,2,10,8,7,5};
+    /*1.创建函数，实现冒泡排序——>传入数组是传入数组的首地址*/
+    int len = sizeof (arr) / sizeof (arr[0]);
+    bubbleSort(arr,len);
+    /*3.打印数组*/
+    printArray(arr,len);
+
+
+}
+/*冒泡排序函数*/
+/**
+ * @param * arr 数组首地址
+ * @param len 数组长度
+ */
+void bubbleSort(int * arr,int len){
+    for(int i = 0;i < len-1;i++){
+        for(int j = 0;j< len - i - 1;j++){
+            if(arr[j] > arr[j+1]){
+                int temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
+}
+void printArray(int * arr,int len){
+    for(int i=0;i< len ;i++){
+        cout<<arr[i]<<endl;
+    }
+
+}
+void swap01(int a,int b){
+    int temp = a;
+    a = b;
+    b = temp;
+//    cout<<"swap01:a = "<< a <<endl;
+//    cout<<"swap01:b = "<< b <<endl;
+}
+void swap02(int *p,int *p2){
+    int temp = *p;
+    *p = *p2;
+    *p2 = temp;
+//    cout<<"swap02:a = "<< *p <<endl;
+//    cout<<"swap02:b = "<< *p2 <<endl;
 }
