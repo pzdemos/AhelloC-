@@ -752,21 +752,35 @@ int main(){
 
 /*函数声明*/
 
-    int maxValue = max(3,99);
-    cout<<"比较两个值较大的是:"<<maxValue<<endl;
-
-    swap(3,5);
-    X2(9);
-
-
+//    int maxValue = max(3,99);
+//    cout<<"比较两个值较大的是:"<<maxValue<<endl;
+//
+//    swap(3,5);
+//    X2(9);
 
 
+    int arr[10] = {3,5,2,1,9,8,7,6,10,4,};
+    int len = sizeof (arr)/sizeof (arr[0]);
+//    cout<< len <<endl;
+    for(int i = 0 ; i < len - 1;i++){
+        for (int j = 0; j < len - i - 1; j++) {
+            if(arr[j]>arr[j+1]){
+                int temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+
+    }
+    for(int k=0; k<len;k++){
+        cout<<arr[k]<<endl;
+    }
 
 //    system("pause");
 
     return 0;
 
 }
-int max(int a,int b){
-    return a>b?a:b;
-}
+//int max(int a,int b){
+//    return a>b?a:b;
+//}
